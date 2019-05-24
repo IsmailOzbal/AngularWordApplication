@@ -1,0 +1,41 @@
+<div id="sidebar">
+  <mat-nav-list>
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">
+      <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Dashboard' | translate }}
+    </a>
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/charts']">
+      <mat-icon class="sidenav-icon">bar_chart</mat-icon> {{ 'Charts' | translate }}
+    </a>
+    <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/tables']">
+      <mat-icon class="sidenav-icon">description</mat-icon> {{ 'Words' | translate }}
+    </a>
+
+    <div class="nested-menu">
+        <a mat-list-item (click)="addExpandClass('pagess')">
+          <mat-icon class="sidenav-icon">touch_app</mat-icon> {{ 'Exam' | translate }}
+        </a>
+        <ul class="nested submenu" [class.expand]="showMenu === 'pagess'">
+          <li>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/exam']"> {{ 'Create Exam' | translate }} </a>
+          </li>
+          <li>
+            <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/exam/examlist']"> {{ 'Exam List' | translate }} </a>
+          </li>
+        </ul>
+      </div>
+    <div class="nested-menu">
+      <a mat-list-item (click)="addExpandClass('pages')">
+        <mat-icon class="sidenav-icon">build</mat-icon> {{ 'Word Operation' | translate }}
+      </a>
+      <ul class="nested submenu" [class.expand]="showMenu === 'pages'">
+        <li>
+          <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/submit']"> {{ 'Add Word' | translate }} </a>
+        </li>
+        <li>
+          <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/word-description']"> {{ 'Add Word Description' | translate }} </a>
+        </li>
+      </ul>
+    </div>
+  
+  </mat-nav-list>
+</div>

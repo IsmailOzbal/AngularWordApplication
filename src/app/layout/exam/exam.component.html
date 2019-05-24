@@ -1,0 +1,25 @@
+<ngx-spinner></ngx-spinner>
+<div class="mb-20" fxLayout="row" *ngIf="questionList.length != 0" fxLayout.lt-md="row" fxFlex>
+  <div fxFlex>
+    <h4>WORDLIST EXAM</h4>
+    <hr />
+    <div *ngFor="let question of questionList">
+      <app-question
+        count="{{question.count}}"
+        tag="{{question.tag}}"
+        answerone="{{question.answerone}}"
+        answertwo="{{question.answertwo}}"
+        answerthree="{{question.answerthree}}"
+        answerfour="{{question.answerfour}}"
+      ></app-question>
+    </div>
+    <button *ngIf="submit" mat-raised-button color="primary" (click)="Save()">Complete</button>
+
+    <button *ngIf="reload" mat-raised-button color="warn" (click)="Reload()">Load Exam</button>
+    <hr />
+    <b>
+      Good luck!
+      <h6>Each question has {{ point }} points</h6>
+    </b>
+  </div>
+</div>

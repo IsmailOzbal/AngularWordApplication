@@ -1,0 +1,19 @@
+<mat-card class="mb-20">
+    <mat-card-header>
+      <b>Question {{ count }} :</b> What is the definition of &nbsp; <b style="color:blue">{{ tag }}</b> &nbsp;?
+    </mat-card-header>
+    <mat-card-content>
+      <mat-radio-group class="example-radio-group" required >
+        <mat-radio-button class="example-radio-group" (change)="Change(answerone)" [value]="answerone"> {{ answerone }} </mat-radio-button>
+        <mat-radio-button class="example-radio-group" (change)="Change(answertwo)" [value]="answertwo"> {{ answertwo }} </mat-radio-button>
+        <mat-radio-button class="example-radio-group" (change)="Change(answerthree)" [value]="answerthree">
+          {{ answerthree }}
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-group" (change)="Change(answerfour)" [value]="answerfour">
+          {{ answerfour }}
+        </mat-radio-button>
+        <br />
+      </mat-radio-group>
+    </mat-card-content>
+</mat-card>
+

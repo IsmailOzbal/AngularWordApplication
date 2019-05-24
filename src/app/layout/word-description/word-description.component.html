@@ -1,0 +1,34 @@
+<ngx-spinner></ngx-spinner>
+<div class="card">
+  <div class="card-header">Word Details</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+        <form [formGroup]="wordDetailForm" (ngSubmit)="onSubmit()">
+   
+          <div class="form-group">
+            <label>Select Word</label>
+            <select class="form-control" formControlName="WordsId" placeholder="Select word">
+              <option *ngFor="let word of wordList" value="{{word.id}}">{{ word.word }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Select Language</label>
+            <select class="form-control" formControlName="LanguageTypeId" placeholder="Select languague"> 
+              <option *ngFor="let lang of langList" value="{{lang.id}}">{{lang.key}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Word Description</label> <input type="text" class="form-control" formControlName="Description" />
+          </div>
+
+          <div class="form-group">
+            <label>Word Sample Sentences</label> <textarea type="text" class="form-control" formControlName="SampleSentences"></textarea>
+          </div>
+
+          <div class="form-group"><button mat-raised-button color="primary">Detail Add</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

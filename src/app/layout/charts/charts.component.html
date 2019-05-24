@@ -1,0 +1,100 @@
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+  <div fxFlex>
+    <mat-card>
+      <mat-card-header> <mat-card-title>Exam Result</mat-card-title> </mat-card-header>
+      <mat-card-content *ngIf="barExist">
+ 
+          <canvas
+            baseChart
+            width="400"
+            height="200"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+          ></canvas>
+ 
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex>
+    <mat-card>
+      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>
+      <mat-card-content *ngIf="doughnutExist">
+
+        <canvas
+          baseChart
+          width="400"
+          height="200"
+          [datasets]="doughnutChartData"
+          [labels]="doughnutChartLabels"
+          [chartType]="doughnutChartType"
+        ></canvas>
+    
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+  <div fxFlex>
+    <mat-card>
+      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>
+      <mat-card-content *ngIf="radarExist">
+
+        <canvas
+          baseChart
+          width="400"
+          height="200"
+          [datasets]="radarChartData"
+          [labels]="radarChartLabels"
+          [chartType]="radarChartType"
+        ></canvas>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex>
+    <mat-card>
+      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>
+      <mat-card-content *ngIf="pieExist">
+        <canvas
+          baseChart
+          width="400"
+          height="200"
+          [datasets]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+        ></canvas>
+    
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<!--
+  <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+      <div fxFlex>
+          <mat-card>
+              <mat-card-header>
+                  <mat-card-title>Polar Area Chart</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                  <canvas baseChart width="500" height="200" [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend"
+                      [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </mat-card-content>
+          </mat-card>
+      </div>
+      <div fxFlex>
+          <mat-card>
+              <mat-card-header>
+                  <mat-card-title>Line Chart</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                  <canvas baseChart width="500" height="200" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                      [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+              </mat-card-content>
+          </mat-card>
+      </div>
+  </div>
+-->

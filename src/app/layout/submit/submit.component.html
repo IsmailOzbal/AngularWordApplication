@@ -1,0 +1,25 @@
+<ngx-spinner></ngx-spinner>
+<div class="card">
+  <div class="card-header">Add Word</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-8">
+         
+        <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label>Select Word Type:</label>
+            <select class="form-control" formControlName="WordTypeId" placeholder="Select word type">
+              <option *ngFor="let word of wordtypeLists" value="{{word.id}}">{{ word.type }} </option>
+            </select>
+            <button mat-icon-button disabled>
+                <mat-icon aria-label="Example icon-button with a heart icon"  (click)="AddWordType()"  >add</mat-icon>
+                 <a (click)="AddWordType()">Word Type</a>
+            </button>
+          </div>
+          <div class="form-group"><label>Word</label> <input type="text" class="form-control" formControlName="Word" /></div>
+          <div class="form-group"><button mat-raised-button color="primary">Word Add</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<ngx-spinner></ngx-spinner>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+  <div fxFlex><app-stat [bgClass]="'danger'" [icon]="'dashboard'" count="{{value_one}}" label="{{label_one}}"></app-stat></div>
+  <div fxFlex><app-stat [bgClass]="'warn'" [icon]="'dashboard'" count="{{value_two}}" label="{{label_two}}"></app-stat></div>
+  <div fxFlex><app-stat [bgClass]="'success'" [icon]="'dashboard'" count="{{value_three}}" label="{{label_three}}"></app-stat></div>
+  <div fxFlex><app-stat [bgClass]="'info'" [icon]="'dashboard'" count="{{value_four}}" label="{{label_four}}"></app-stat></div>
+  <div fxFlex><app-stat [bgClass]="'purple'" [icon]="'dashboard'" count="{{value_five}}" label="{{label_five}}"></app-stat></div>
+</div>
+
+<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column">
+  <div fxFlex>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="word">
+        <th mat-header-cell *matHeaderCellDef>Word</th>
+        <td mat-cell *matCellDef="let element">{{ element.word }}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sampleSentences">
+        <th mat-header-cell *matHeaderCellDef>Sentences</th>
+        <td mat-cell *matCellDef="let element">{{ element.sampleSentences }}</td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Word Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+      </ng-container>
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef>Result</th>
+        <td mat-cell>
+          
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

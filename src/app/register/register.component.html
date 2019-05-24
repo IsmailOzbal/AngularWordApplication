@@ -1,0 +1,60 @@
+<ngx-spinner></ngx-spinner>
+<div class="register-page">
+  <div class="content">
+    <form class="register-form" [formGroup]='RegisterForm' (ngSubmit)='onSubmit()' >
+      <div class="text-center">
+        <h2 class="app-name">NEW USER</h2>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Name" formControlName="Name"  />
+           
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Surname" formControlName="Surname" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input matInput placeholder="Username is minimum 6 character" formControlName="Username" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex fxlayout="row" fxlayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input matInput type="email" placeholder="Email" formControlName="Email" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <mat-form-field class="w-100">
+            <input matInput type="password" placeholder="Password" formControlName="Password" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+          <button mat-raised-button color="primary" class="w-100">SAVE</button>
+        </div>
+      </div>
+      <hr/>
+      <div fxFlex fxLayout="row" fxLayout.lt-md="column">
+        <div fxFlexFill>
+        
+            <a mat-list-item   [routerLink]="['/login']">
+                <mat-icon class="sidenav-icon">touch_app</mat-icon> Login
+            </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

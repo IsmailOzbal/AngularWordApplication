@@ -1,0 +1,73 @@
+<ngx-spinner></ngx-spinner>
+<div class="card">
+  <div class="card-header">User Information</div>
+  <div class="card-body">
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="registerForm" (ngSubmit)="ChangePassword()">
+           <div class="row">
+               <div class="col-md-6">
+                  <div class="form-group">
+                        <label>Name</label>
+                        <label class="form-control">{{user.firstName}}</label>
+                  </div>
+               </div>
+
+               <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Surname</label>
+                            <label class="form-control">{{user.lastName}}</label>
+    
+                      </div>
+                </div>
+           </div>
+
+           <div class="row">
+               <div class="col-md-6">
+                   <div class="form-group">
+                       <label>Username</label>
+                       <label class="form-control">{{user.username}}</label>
+                   </div>
+               </div>
+           </div>
+           <hr/>
+
+           <div class="row">
+               <div class="col-md-6">
+                    <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors.required">Password is required</div>
+                                <div *ngIf="f['password'].errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div>
+               </div>
+
+               <div class="col-md-6">
+                         
+ 
+            <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                        <div *ngIf="f['confirmPassword'].errors.required">Confirm Password is required</div>
+                        <div *ngIf="f['confirmPassword'].errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+               </div>
+           </div>
+
+
+    
+    
+            <div class="form-group">
+                    <button mat-raised-button color="primary">Password Change</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+</div>
