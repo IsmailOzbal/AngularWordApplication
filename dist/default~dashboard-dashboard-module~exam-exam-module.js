@@ -129,8 +129,8 @@ var ExamComponent = /** @class */ (function () {
                 }
                 this.sayi++;
             }
-            this.exam.Score = this.score;
-            this.exam.UserId = +localStorage.getItem('userid');
+            this.exam.score = this.score;
+            this.exam.userId = +localStorage.getItem('userid');
             this.insertScore
                 .InsertScore(this.exam)
                 .toPromise()
@@ -211,7 +211,7 @@ module.exports = "<mat-card class=\"mb-20\">\r\n    <mat-card-header>\r\n      <
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".example-radio-group {\n  display: inline-flex;\n  flex-direction: column; }\n\n.example-radio-button {\n  margin: 5px; }\n\n.example-selected-value {\n  margin: 15px 0; }\n\n.mat-card.gray {\n  background: linear-gradient(60deg, gray, gray); }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL21vZHVsZXMvcXVlc3Rpb24vQzpcXFVzZXJzXFxPd25lclxcRG9jdW1lbnRzXFxHaXRIdWJcXEFuZ3VsYXJXb3JkTGlzdEFwcC9zcmNcXGFwcFxcc2hhcmVkXFxtb2R1bGVzXFxxdWVzdGlvblxccXVlc3Rpb24uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxvQkFBb0I7RUFDcEIsc0JBQXNCLEVBQUE7O0FBR3hCO0VBQ0UsV0FBVyxFQUFBOztBQUdiO0VBQ0UsY0FBYyxFQUFBOztBQUdoQjtFQUNFLDhDQUE4QyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL21vZHVsZXMvcXVlc3Rpb24vcXVlc3Rpb24uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhhbXBsZS1yYWRpby1ncm91cCB7XHJcbiAgZGlzcGxheTogaW5saW5lLWZsZXg7XHJcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxufVxyXG5cclxuLmV4YW1wbGUtcmFkaW8tYnV0dG9uIHtcclxuICBtYXJnaW46IDVweDtcclxufVxyXG5cclxuLmV4YW1wbGUtc2VsZWN0ZWQtdmFsdWUge1xyXG4gIG1hcmdpbjogMTVweCAwO1xyXG59XHJcblxyXG4ubWF0LWNhcmQuZ3JheSB7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDYwZGVnLCBncmF5LCBncmF5KTtcclxufVxyXG4iXX0= */"
+module.exports = ".example-radio-group {\n  display: inline-flex;\n  flex-direction: column; }\n\n.example-radio-button {\n  margin: 5px; }\n\n.example-selected-value {\n  margin: 15px 0; }\n\n.mat-card.gray {\n  background: linear-gradient(60deg, gray, gray); }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL21vZHVsZXMvcXVlc3Rpb24vQzpcXFVzZXJzXFxPd25lclxcRG9jdW1lbnRzXFxHaXRIdWJcXEFuZ3VsYXJXb3JkQXBwbGljYXRpb24vc3JjXFxhcHBcXHNoYXJlZFxcbW9kdWxlc1xccXVlc3Rpb25cXHF1ZXN0aW9uLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQW9CO0VBQ3BCLHNCQUFzQixFQUFBOztBQUd4QjtFQUNFLFdBQVcsRUFBQTs7QUFHYjtFQUNFLGNBQWMsRUFBQTs7QUFHaEI7RUFDRSw4Q0FBOEMsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9tb2R1bGVzL3F1ZXN0aW9uL3F1ZXN0aW9uLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmV4YW1wbGUtcmFkaW8tZ3JvdXAge1xyXG4gIGRpc3BsYXk6IGlubGluZS1mbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbn1cclxuXHJcbi5leGFtcGxlLXJhZGlvLWJ1dHRvbiB7XHJcbiAgbWFyZ2luOiA1cHg7XHJcbn1cclxuXHJcbi5leGFtcGxlLXNlbGVjdGVkLXZhbHVlIHtcclxuICBtYXJnaW46IDE1cHggMDtcclxufVxyXG5cclxuLm1hdC1jYXJkLmdyYXkge1xyXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgZ3JheSwgZ3JheSk7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -363,18 +363,16 @@ var InsertScoreService = /** @class */ (function () {
     function InsertScoreService(http, toastr) {
         this.http = http;
         this.toastr = toastr;
-        this.httpOptions = {
+        this.header = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             })
         };
     }
-    InsertScoreService.prototype.InsertScore = function (hero) {
-        var body = new URLSearchParams();
-        body.set('UserId', hero.UserId.toString());
-        body.set('Score', hero.Score.toString());
+    InsertScoreService.prototype.InsertScore = function (exam) {
         return this.http
-            .post(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'InsertExam', body.toString(), this.httpOptions)
+            .post(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'exam/addexam', exam, this.header)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('InsertScore')));
     };
     InsertScoreService.prototype.log = function (message) {
@@ -437,18 +435,16 @@ var QuestionsService = /** @class */ (function () {
     function QuestionsService(http, toastr) {
         this.http = http;
         this.toastr = toastr;
-        this.httpOptions = {
+        this.header = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             })
         };
     }
     QuestionsService.prototype.getQuestionsList = function () {
-        return this.http.get(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'GetQuestion/GetList', {
-            params: {
-                userId: localStorage.getItem('userid'),
-            }
-        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('GetQuestion', [])));
+        return this.http.get(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'question/getquestions', this.header).
+            pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('GetQuestion', [])));
     };
     QuestionsService.prototype.log = function (message) {
         this.toastr.error('Error get question data.Wordlist must be bigger than 10');

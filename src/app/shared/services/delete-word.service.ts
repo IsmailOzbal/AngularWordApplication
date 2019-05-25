@@ -13,33 +13,20 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DeleteWordService {
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    })
-  };
-
-  httpOptionsJson = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
-  header: any;
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
-  deleteWord(id: number, token: string): any {
+  deleteWord(id: number): any  {
 
-    this.header = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-        'Access-Control-Allow-Origin': '*',
-      })
-    };
-
-
+    const url = `${Global.BaseUri + 'word/deleteword?id='}${id}`;
+    alert(url);
     return this.http
-      .delete<void>(Global.BaseUri + 'DeleteWord/' + id, this.header)
+      .delete<string>(url,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' +  localStorage.getItem('token')
+        }
+      })
       .pipe(catchError(this.handleError('deleteWord', [])));
 
   }

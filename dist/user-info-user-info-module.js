@@ -142,7 +142,7 @@ var UserInfoComponent = /** @class */ (function () {
         }
         this.spinner.show();
         this.changePassword
-            .ChangePassword(localStorage.getItem('userid'), this.registerForm.value.password)
+            .ChangePassword(+localStorage.getItem('userid'), this.registerForm.value.password)
             .toPromise()
             .then(function (res) {
             _this.user = res;
@@ -279,6 +279,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _Model_Global__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Model/Global */ "./src/app/shared/Model/Global.ts");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _Model_User__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Model/User */ "./src/app/shared/Model/User.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -294,22 +295,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ChangePasswordService = /** @class */ (function () {
     function ChangePasswordService(http, toastrService) {
         this.http = http;
         this.toastrService = toastrService;
-        this.httpOptions = {
+        this.header = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             })
         };
+        this.user = new _Model_User__WEBPACK_IMPORTED_MODULE_6__["UserModel"]();
     }
     ChangePasswordService.prototype.ChangePassword = function (id, password) {
-        var body = new URLSearchParams();
-        body.set('id', id);
-        body.set('password', password);
+        this.user.id = id;
+        this.user.password = password;
         return this.http
-            .post(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'ChangePassword', body.toString(), this.httpOptions)
+            .post(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'password/changepassword', this.user, this.header)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('ChangePassword')));
     };
     ChangePasswordService.prototype.log = function (message) {

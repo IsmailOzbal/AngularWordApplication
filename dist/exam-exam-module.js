@@ -139,7 +139,7 @@ var ExamModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h4>EXAMLIST</h4><hr/>\r\n<div class=\"mb-20\" flFlex flexLayout=\"row\" flexLayout.lt-md=\"column\">\r\n\r\n    <div fxFlex>\r\n      <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n        <ng-container matColumnDef=\"UserName\">\r\n          <th mat-header-cell *matHeaderCellDef>User Name</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.UserName }}</td>\r\n        </ng-container>\r\n        <ng-container matColumnDef=\"Score\">\r\n          <th mat-header-cell *matHeaderCellDef>Score</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.Score }}</td>\r\n        </ng-container>\r\n        <ng-container matColumnDef=\"CreateDate\">\r\n          <th mat-header-cell *matHeaderCellDef>Create Date</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.CreateDate }}</td>\r\n        </ng-container>\r\n\r\n        <ng-container matColumnDef=\"Result\">\r\n            <th mat-header-cell *matHeaderCellDef>Result</th>\r\n            <td mat-cell *matCellDef=\"let element\">\r\n              <img *ngIf=\"element.Score>70\"  src='https://res.cloudinary.com/dukp6c7f7/image/upload/f_auto,fl_lossy,q_auto/s3-ghost/2017/12/Screen_Recording_2017_12_21_at_09_03_PM-1513915448694.gif' width=\"35px\" height='35px' >\r\n              <img *ngIf=\"element.Score<70\"  src='http://mcdesesteys.com/wp-content/uploads/2015/12/attention.gif' width=\"35px\" height='35px' >\r\n            </td>\r\n          </ng-container>\r\n\r\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n      </table>\r\n    </div>\r\n  </div>"
+module.exports = "<h4>EXAMLIST</h4><hr/>\r\n<div class=\"mb-20\" flFlex flexLayout=\"row\" flexLayout.lt-md=\"column\">\r\n\r\n    <div fxFlex>\r\n      <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8\">\r\n        <ng-container matColumnDef=\"userName\">\r\n          <th mat-header-cell *matHeaderCellDef>User Name</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.userName }}</td>\r\n        </ng-container>\r\n        <ng-container matColumnDef=\"score\">\r\n          <th mat-header-cell *matHeaderCellDef>Score</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.score }}</td>\r\n        </ng-container>\r\n        <ng-container matColumnDef=\"createDate\">\r\n          <th mat-header-cell *matHeaderCellDef>Create Date</th>\r\n          <td mat-cell *matCellDef=\"let element\">{{ element.createDate }}</td>\r\n        </ng-container>\r\n\r\n        <ng-container matColumnDef=\"result\">\r\n            <th mat-header-cell *matHeaderCellDef>result</th>\r\n            <td mat-cell *matCellDef=\"let element\">\r\n              <img *ngIf=\"element.score>70\"  src='https://res.cloudinary.com/dukp6c7f7/image/upload/f_auto,fl_lossy,q_auto/s3-ghost/2017/12/Screen_Recording_2017_12_21_at_09_03_PM-1513915448694.gif' width=\"35px\" height='35px' >\r\n              <img *ngIf=\"element.score<70\"  src='http://mcdesesteys.com/wp-content/uploads/2015/12/attention.gif' width=\"35px\" height='35px' >\r\n            </td>\r\n          </ng-container>\r\n\r\n        <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\r\n        <tr mat-row *matRowDef=\"let row; columns: displayedColumns\"></tr>\r\n      </table>\r\n    </div>\r\n  </div>"
 
 /***/ }),
 
@@ -150,7 +150,7 @@ module.exports = "<h4>EXAMLIST</h4><hr/>\r\n<div class=\"mb-20\" flFlex flexLayo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "table {\n  width: 100%; }\n\n.mat-card {\n  text-align: center; }\n\n.mat-card img {\n    border-radius: 5px;\n    margin-top: -25px; }\n\n.mat-table {\n  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }\n\n.mb-20 {\n  margin-bottom: 20px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L2V4YW0vZXhhbWxpc3QvQzpcXFVzZXJzXFxPd25lclxcRG9jdW1lbnRzXFxHaXRIdWJcXEFuZ3VsYXJXb3JkTGlzdEFwcC9zcmNcXGFwcFxcbGF5b3V0XFxleGFtXFxleGFtbGlzdFxcZXhhbWxpc3QuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFXLEVBQUE7O0FBRWY7RUFDSSxrQkFBa0IsRUFBQTs7QUFEdEI7SUFHUSxrQkFBa0I7SUFDbEIsaUJBQWlCLEVBQUE7O0FBR3pCO0VBQ0ksK0dBQ21DLEVBQUE7O0FBR3ZDO0VBQ0ksbUJBQW1CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9sYXlvdXQvZXhhbS9leGFtbGlzdC9leGFtbGlzdC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbInRhYmxlIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcbi5tYXQtY2FyZCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBpbWcge1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICAgICAgICBtYXJnaW4tdG9wOiAtMjVweDtcclxuICAgIH1cclxufVxyXG4ubWF0LXRhYmxlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgM3B4IDFweCAtMnB4IHJnYmEoMCwgMCwgMCwgMC4yKSwgMCAycHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSxcclxuICAgICAgICAwIDFweCA1cHggMCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xyXG59XHJcblxyXG4ubWItMjAge1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcclxufVxyXG4iXX0= */"
+module.exports = "table {\n  width: 100%; }\n\n.mat-card {\n  text-align: center; }\n\n.mat-card img {\n    border-radius: 5px;\n    margin-top: -25px; }\n\n.mat-table {\n  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }\n\n.mb-20 {\n  margin-bottom: 20px; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L2V4YW0vZXhhbWxpc3QvQzpcXFVzZXJzXFxPd25lclxcRG9jdW1lbnRzXFxHaXRIdWJcXEFuZ3VsYXJXb3JkQXBwbGljYXRpb24vc3JjXFxhcHBcXGxheW91dFxcZXhhbVxcZXhhbWxpc3RcXGV4YW1saXN0LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBVyxFQUFBOztBQUVmO0VBQ0ksa0JBQWtCLEVBQUE7O0FBRHRCO0lBR1Esa0JBQWtCO0lBQ2xCLGlCQUFpQixFQUFBOztBQUd6QjtFQUNJLCtHQUNtQyxFQUFBOztBQUd2QztFQUNJLG1CQUFtQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGF5b3V0L2V4YW0vZXhhbWxpc3QvZXhhbWxpc3QuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0YWJsZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4ubWF0LWNhcmQge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgaW1nIHtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgICAgICAgbWFyZ2luLXRvcDogLTI1cHg7XHJcbiAgICB9XHJcbn1cclxuLm1hdC10YWJsZSB7XHJcbiAgICBib3gtc2hhZG93OiAwIDNweCAxcHggLTJweCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgMnB4IDJweCAwIHJnYmEoMCwgMCwgMCwgMC4xNCksXHJcbiAgICAgICAgMCAxcHggNXB4IDAgcmdiYSgwLCAwLCAwLCAwLjEyKTtcclxufVxyXG5cclxuLm1iLTIwIHtcclxuICAgIG1hcmdpbi1ib3R0b206IDIwcHg7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -183,7 +183,7 @@ var ExamlistComponent = /** @class */ (function () {
     function ExamlistComponent(questionservice) {
         this.questionservice = questionservice;
         this.ELEMENT_DATA = [];
-        this.displayedColumns = ['UserName', 'Score', 'CreateDate', 'Result'];
+        this.displayedColumns = ['userName', 'score', 'createDate', 'result'];
     }
     ExamlistComponent.prototype.ngOnInit = function () {
         this.GetData();
@@ -194,6 +194,7 @@ var ExamlistComponent = /** @class */ (function () {
             .getExamList()
             .toPromise()
             .then(function (res) {
+            console.log(res);
             _this.ELEMENT_DATA = res;
             _this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](_this.ELEMENT_DATA);
         });
@@ -253,18 +254,16 @@ var GetexamlistService = /** @class */ (function () {
     function GetexamlistService(http, toastr) {
         this.http = http;
         this.toastr = toastr;
-        this.httpOptions = {
+        this.header = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             })
         };
     }
     GetexamlistService.prototype.getExamList = function () {
-        return this.http.get(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'GetExam/GetList', {
-            params: {
-                userId: localStorage.getItem('userid'),
-            }
-        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('getExamList', [])));
+        return this.http.get(_Model_Global__WEBPACK_IMPORTED_MODULE_4__["Global"].BaseUri + 'exam/getsolveexam', this.header)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.handleError('getExamList', [])));
     };
     GetexamlistService.prototype.log = function (message) {
         this.toastr.error('Error get exam list.');

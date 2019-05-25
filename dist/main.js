@@ -384,6 +384,10 @@ var AuthGuard = /** @class */ (function () {
         if (currentUser) {
             this.date = localStorage.getItem('expiredate');
             var newDate = new Date(this.date);
+            var now = new Date();
+            if (newDate < now) {
+                this.router.navigate(['/login']);
+            }
             return true;
         }
         this.router.navigate(['/login']);
@@ -549,7 +553,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Owner\Documents\GitHub\AngularWordListApp\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Owner\Documents\GitHub\AngularWordApplication\src\main.ts */"./src/main.ts");
 
 
 /***/ })

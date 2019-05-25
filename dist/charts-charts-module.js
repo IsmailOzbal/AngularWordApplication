@@ -33053,7 +33053,7 @@ var ChartsRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Exam Result</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"barExist\">\r\n \r\n          <canvas\r\n            baseChart\r\n            width=\"400\"\r\n            height=\"200\"\r\n            [datasets]=\"barChartData\"\r\n            [labels]=\"barChartLabels\"\r\n            [options]=\"barChartOptions\"\r\n            [legend]=\"barChartLegend\"\r\n            [chartType]=\"barChartType\"\r\n            (chartHover)=\"chartHovered($event)\"\r\n            (chartClick)=\"chartClicked($event)\"\r\n          ></canvas>\r\n \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"doughnutExist\">\r\n\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"doughnutChartData\"\r\n          [labels]=\"doughnutChartLabels\"\r\n          [chartType]=\"doughnutChartType\"\r\n          (chartHover)=\"chartHovered($event)\"\r\n          (chartClick)=\"chartClicked($event)\"\r\n        ></canvas>\r\n    \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n</div>\r\n<div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"radarExist\">\r\n\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"radarChartData\"\r\n          [labels]=\"radarChartLabels\"\r\n          [chartType]=\"radarChartType\"\r\n          (chartHover)=\"chartHovered($event)\"\r\n          (chartClick)=\"chartClicked($event)\"\r\n        ></canvas>\r\n\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"pieExist\">\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"pieChartData\"\r\n          [labels]=\"pieChartLabels\"\r\n          [chartType]=\"pieChartType\"\r\n          (chartHover)=\"chartHovered($event)\"\r\n          (chartClick)=\"chartClicked($event)\"\r\n        ></canvas>\r\n    \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n</div>\r\n<!--\r\n  <div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n      <div fxFlex>\r\n          <mat-card>\r\n              <mat-card-header>\r\n                  <mat-card-title>Polar Area Chart</mat-card-title>\r\n              </mat-card-header>\r\n              <mat-card-content>\r\n                  <canvas baseChart width=\"500\" height=\"200\" [data]=\"polarAreaChartData\" [labels]=\"polarAreaChartLabels\" [legend]=\"polarAreaLegend\"\r\n                      [chartType]=\"polarAreaChartType\" (chartHover)=\"chartHovered($event)\" (chartClick)=\"chartClicked($event)\"></canvas>\r\n              </mat-card-content>\r\n          </mat-card>\r\n      </div>\r\n      <div fxFlex>\r\n          <mat-card>\r\n              <mat-card-header>\r\n                  <mat-card-title>Line Chart</mat-card-title>\r\n              </mat-card-header>\r\n              <mat-card-content>\r\n                  <canvas baseChart width=\"500\" height=\"200\" [datasets]=\"lineChartData\" [labels]=\"lineChartLabels\" [options]=\"lineChartOptions\"\r\n                      [colors]=\"lineChartColors\" [legend]=\"lineChartLegend\" [chartType]=\"lineChartType\" (chartHover)=\"chartHovered($event)\"\r\n                      (chartClick)=\"chartClicked($event)\"></canvas>\r\n              </mat-card-content>\r\n          </mat-card>\r\n      </div>\r\n  </div>\r\n-->\r\n"
+module.exports = "<div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Exam Result</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"barExist\">\r\n \r\n          <canvas\r\n            baseChart\r\n            width=\"400\"\r\n            height=\"200\"\r\n            [datasets]=\"barChartData\"\r\n            [labels]=\"barChartLabels\"\r\n            [options]=\"barChartOptions\"\r\n            [legend]=\"barChartLegend\"\r\n            [chartType]=\"barChartType\"\r\n          ></canvas>\r\n \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"doughnutExist\">\r\n\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"doughnutChartData\"\r\n          [labels]=\"doughnutChartLabels\"\r\n          [chartType]=\"doughnutChartType\"\r\n        ></canvas>\r\n    \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n</div>\r\n<div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"radarExist\">\r\n\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"radarChartData\"\r\n          [labels]=\"radarChartLabels\"\r\n          [chartType]=\"radarChartType\"\r\n        ></canvas>\r\n\r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n  <div fxFlex>\r\n    <mat-card>\r\n      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>\r\n      <mat-card-content *ngIf=\"pieExist\">\r\n        <canvas\r\n          baseChart\r\n          width=\"400\"\r\n          height=\"200\"\r\n          [datasets]=\"pieChartData\"\r\n          [labels]=\"pieChartLabels\"\r\n          [chartType]=\"pieChartType\"\r\n        ></canvas>\r\n    \r\n      </mat-card-content>\r\n    </mat-card>\r\n  </div>\r\n</div>\r\n<!--\r\n  <div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\" fxFlex fxLayoutGap=\"20px\">\r\n      <div fxFlex>\r\n          <mat-card>\r\n              <mat-card-header>\r\n                  <mat-card-title>Polar Area Chart</mat-card-title>\r\n              </mat-card-header>\r\n              <mat-card-content>\r\n                  <canvas baseChart width=\"500\" height=\"200\" [data]=\"polarAreaChartData\" [labels]=\"polarAreaChartLabels\" [legend]=\"polarAreaLegend\"\r\n                      [chartType]=\"polarAreaChartType\" (chartHover)=\"chartHovered($event)\" (chartClick)=\"chartClicked($event)\"></canvas>\r\n              </mat-card-content>\r\n          </mat-card>\r\n      </div>\r\n      <div fxFlex>\r\n          <mat-card>\r\n              <mat-card-header>\r\n                  <mat-card-title>Line Chart</mat-card-title>\r\n              </mat-card-header>\r\n              <mat-card-content>\r\n                  <canvas baseChart width=\"500\" height=\"200\" [datasets]=\"lineChartData\" [labels]=\"lineChartLabels\" [options]=\"lineChartOptions\"\r\n                      [colors]=\"lineChartColors\" [legend]=\"lineChartLegend\" [chartType]=\"lineChartType\" (chartHover)=\"chartHovered($event)\"\r\n                      (chartClick)=\"chartClicked($event)\"></canvas>\r\n              </mat-card-content>\r\n          </mat-card>\r\n      </div>\r\n  </div>\r\n-->\r\n"
 
 /***/ }),
 
@@ -33064,7 +33064,7 @@ module.exports = "<div class=\"mb-20\" fxLayout=\"row\" fxLayout.lt-md=\"column\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card {\n  width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L2NoYXJ0cy9DOlxcVXNlcnNcXE93bmVyXFxEb2N1bWVudHNcXEdpdEh1YlxcQW5ndWxhcldvcmRMaXN0QXBwL3NyY1xcYXBwXFxsYXlvdXRcXGNoYXJ0c1xcY2hhcnRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBVyxFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGF5b3V0L2NoYXJ0cy9jaGFydHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZCB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4iXX0= */"
+module.exports = ".card {\n  width: 100%; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGF5b3V0L2NoYXJ0cy9DOlxcVXNlcnNcXE93bmVyXFxEb2N1bWVudHNcXEdpdEh1YlxcQW5ndWxhcldvcmRBcHBsaWNhdGlvbi9zcmNcXGFwcFxcbGF5b3V0XFxjaGFydHNcXGNoYXJ0cy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQVcsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2xheW91dC9jaGFydHMvY2hhcnRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuIl19 */"
 
 /***/ }),
 
@@ -33123,15 +33123,11 @@ var ChartsComponent = /** @class */ (function () {
         this.pieloading = true;
         this.pieExist = false;
         // PolarArea
-        this.polarAreaChartLabels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
-        this.polarAreaChartData = [300, 500, 100, 40, 120];
+        this.polarAreaChartLabels = [];
+        this.polarAreaChartData = [];
         // lineChart
-        this.lineChartData = [
-            { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-            { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-            { data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C' }
-        ];
-        this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+        this.lineChartData = [];
+        this.lineChartLabels = [];
         this.lineChartOptions = {
             responsive: true
         };
@@ -33167,26 +33163,13 @@ var ChartsComponent = /** @class */ (function () {
         this.GetCharData();
         this.GetPieData();
     }
-    // events
-    ChartsComponent.prototype.chartClicked = function (e) {
-        // console.log(e);
-    };
-    ChartsComponent.prototype.chartHovered = function (e) {
-        // console.log(e);
-    };
-    ChartsComponent.prototype.randomize = function () {
-        // Only Change 3 values
-        var data = [Math.round(Math.random() * 100), 59, 80, Math.random() * 100, 56, Math.random() * 100, 40];
-        var clone = JSON.parse(JSON.stringify(this.barChartData));
-        clone[0].data = data;
-        this.barChartData = clone;
-    };
     ChartsComponent.prototype.GetPieData = function () {
         var _this = this;
         this.examService
             .getExamChartData()
             .toPromise()
             .then(function (res) {
+            console.log(res);
             _this.pieData = res;
             _this.barChartLabels = _this.pieData['labels'];
             _this.barChartData[0].data = _this.pieData['data'];

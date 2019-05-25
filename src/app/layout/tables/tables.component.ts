@@ -95,27 +95,14 @@ export class TablesComponent implements OnInit {
       confirmButtonText: 'Yes, delete it!'
     }).then(result => {
       if (result.value) {
-        this.Login(word.id);
+        this.delete(word.id);
       }
     });
   }
 
-  Login(Id: number) {
-
-    this.user.username = 'ismailozbal';
-    this.user.password = 'admin';
-    this.loginService
-      .Login(this.user)
-      .toPromise()
-      .then(res => {
-        this.token = res;
-        this.delete(Id, this.token.token);
-      });
-  }
-
-  delete(Id: number, tokens: string): void {
+  delete(Id: number): void {
     this.deleteword
-      .deleteWord(Id, tokens)
+      .deleteWord(Id)
       .toPromise()
       .then(res => {
         this.animal = res;
