@@ -7,13 +7,15 @@ import { Words } from '../Model/Words';
 import { Global } from '../Model/Global';
 import { WordView } from '../Model/WordView';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeleteWordService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService
+  ) {}
 
   deleteWord(id: number): any  {
 
@@ -27,19 +29,8 @@ export class DeleteWordService {
           'Authorization': 'Bearer ' +  localStorage.getItem('token')
         }
       })
-      .pipe(catchError(this.handleError('deleteWord', [])));
+      .pipe(catchError(this.error.handleError('deleteWord', [])));
 
   }
 
-  private log(message: string) {
-    this.toastr.error('Error delete word');
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
-  }
 }

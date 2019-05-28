@@ -7,6 +7,7 @@ import { Questions } from '../Model/Questions';
 import { Global } from '../Model/Global';
 import { Exam, ExamView } from '../Model/Exam';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,29 +22,16 @@ export class InsertScoreService {
   };
 
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) { }
 
   InsertScore(exam: Exam): Observable<Exam> {
 
 
     return this.http
       .post<Exam>(Global.BaseUri + 'exam/addexam', exam, this.header)
-      .pipe(catchError(this.handleError<Exam>('InsertScore')));
+      .pipe(catchError(this.error.handleError<Exam>('InsertScore')));
 
 
-  }
-
-  private log(message: string) {
-    this.toastr.error('Error add score');
-
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
   }
 
 

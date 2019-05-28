@@ -7,6 +7,7 @@ import { User, UserModel } from '../Model/User';
 import swal from 'sweetalert2';
 import { ToastrService } from 'ngx-toastr';
 import { Global } from '../Model/Global';
+import { ErrorService } from './error.service';
 
 
 @Injectable({
@@ -21,7 +22,7 @@ export class InsertUserService {
   };
 
   User: UserModel = new UserModel();
-  constructor(private http: HttpClient, private toastrService: ToastrService) {
+  constructor(private http: HttpClient, private toastrService: ToastrService, private error: ErrorService) {
 
 
   }
@@ -35,19 +36,7 @@ export class InsertUserService {
 
     return this.http
       .post<User>(Global.BaseUri + 'user/adduser', this.User, this.header)
-      .pipe(catchError(this.handleError<User>('AddUser')));
+      .pipe(catchError(this.error.handleError<User>('AddUser')));
   }
 
-  private log(message: string) {
-
-    this.toastrService.error('Error insert user');
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
 }

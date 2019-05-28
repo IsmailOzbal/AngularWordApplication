@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 import { WordSentences } from '../Model/WordSentences';
 import { Global } from '../Model/Global';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,24 +19,14 @@ export class WordSentencesService {
     })
   };
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) { }
 
   AddWordSentences(sentence: WordSentences): Observable<WordSentences> {
 
     return this.http
       .post<WordSentences>(Global.BaseUri + 'wordsentences/addsentences', sentence, this.header)
-      .pipe(catchError(this.handleError<WordSentences>('AddWordSentences')));
+      .pipe(catchError(this.error.handleError<WordSentences>('AddWordSentences')));
   }
 
-  private log(message: string) {
-    this.toastr.error('Error get word sentences');
-  }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
 }

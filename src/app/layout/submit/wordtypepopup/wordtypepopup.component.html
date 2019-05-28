@@ -1,0 +1,14 @@
+
+<h1 mat-dialog-title>Word Type Add</h1>
+
+<div mat-dialog-content>
+    <mat-form-field> 
+      <input matInput  placeholder="Type enter" required  [(ngModel)]="data.wordtype"> 
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onClick()" [mat-dialog-close]="data.wordtype" cdkFocusInitia>Add</button>
+  <button class="warn-button" mat-raised-button color="warn" (click)="onNoClick()">Exit</button>
+ 
+</div>

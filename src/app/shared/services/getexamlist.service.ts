@@ -7,6 +7,7 @@ import { Questions } from '../Model/Questions';
 import { Global } from '../Model/Global';
 import { Exam, ExamView } from '../Model/Exam';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 
 @Injectable({
@@ -21,25 +22,12 @@ export class GetexamlistService {
     })
   };
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService) { }
 
   getExamList(): Observable<ExamView[]> {
     return this.http.get<ExamView[]>(Global.BaseUri + 'exam/getsolveexam', this.header)
-    .pipe(catchError(this.handleError('getExamList', [])));
+    .pipe(catchError(this.error.handleError('getExamList', [])));
 
   }
 
-
-  private log(message: string) {
-    this.toastr.error('Error get exam list.');
-
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
-  }
 }

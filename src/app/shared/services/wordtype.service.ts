@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 import { WordType } from '../Model/WordType';
 import { Global } from '../Model/Global';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,28 +21,18 @@ export class WordtypeService {
   };
 
   wordtype: WordType = new WordType();
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) {}
 
   getWordTypeList(): Observable<WordType[]> {
     return this.http.get<WordType[]>(Global.BaseUri + 'wordtype/getwordtype', this.header)
-    .pipe(catchError(this.handleError('getwordtype', [])));
+    .pipe(catchError(this.error.handleError('getwordtype', [])));
   }
 
-  AddWordType(hero: string): Observable<WordType> {
-    this.wordtype.type = hero;
+  AddWordType(type: string): Observable<WordType> {
+    this.wordtype.type = type;
     return this.http
       .post<WordType>(Global.BaseUri + 'wordtype/addwordtype', this.wordtype, this.header)
-      .pipe(catchError(this.handleError<WordType>('addWordType')));
-  }
-  private log(message: string) {
-    this.toastr.error(message);
+      .pipe(catchError(this.error.handleError<WordType>('addWordType')));
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
 }

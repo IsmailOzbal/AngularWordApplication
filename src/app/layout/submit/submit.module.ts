@@ -22,8 +22,12 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { WordtypepopupComponent } from './wordtypepopup/wordtypepopup.component';
 @NgModule({
-  declarations: [SubmitComponent],
+  declarations: [SubmitComponent, WordtypepopupComponent],
+  entryComponents: [
+    WordtypepopupComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

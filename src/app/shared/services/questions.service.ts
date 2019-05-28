@@ -7,6 +7,7 @@ import { Questions } from '../Model/Questions';
 import { Global } from '../Model/Global';
 import { Exam, ExamView } from '../Model/Exam';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,24 +21,11 @@ export class QuestionsService {
     })
   };
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) { }
 
   getQuestionsList(): Observable<Questions[]> {
     return this.http.get<Questions[]>(Global.BaseUri + 'question/getquestions', this.header).
-    pipe(catchError(this.handleError('GetQuestion', [])));
-  }
-
-  private log(message: string) {
-    this.toastr.error('Error get question data.Wordlist must be bigger than 10');
-
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
+    pipe(catchError(this.error.handleError('GetQuestion', [])));
   }
 
 }

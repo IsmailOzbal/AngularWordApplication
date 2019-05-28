@@ -7,6 +7,7 @@ import { Token } from '../Model/Token';
 import { Global } from '../Model/Global';
 import { ToastrService } from 'ngx-toastr';
 import { User, UserModel } from '../Model/User';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,26 +21,15 @@ export class ChangePasswordService {
   };
 
   user: UserModel = new UserModel();
-  constructor(private http: HttpClient, private toastrService: ToastrService) { }
+  constructor(private http: HttpClient, private toastrService: ToastrService, private error: ErrorService) { }
 
   ChangePassword(id: number, password: string): Observable<User> {
     this.user.id = id;
     this.user.password = password;
     return this.http
     .post<User>(Global.BaseUri + 'password/changepassword', this.user, this.header)
-    .pipe(catchError(this.handleError<User>('ChangePassword')));
+    .pipe(catchError(this.error.handleError<User>('ChangePassword')));
 
   }
 
-  private log(message: string) {
-    this.toastrService.error('Password change error');
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
 }

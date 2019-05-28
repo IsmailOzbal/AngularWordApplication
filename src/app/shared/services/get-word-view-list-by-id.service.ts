@@ -7,6 +7,7 @@ import { Words } from '../Model/Words';
 import { Global } from '../Model/Global';
 import { WordView } from '../Model/WordView';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class GetWordViewListByIdService {
       'Authorization': 'Bearer ' +  localStorage.getItem('token')
     })
   };
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService) {}
 
   getWordViewListById(id: any): Observable<WordView> {
 
@@ -35,7 +36,7 @@ export class GetWordViewListByIdService {
           'Id': id,
         }
       })
-      .pipe(catchError(this.handleError<WordView>('getWordViewListById')));
+      .pipe(catchError(this.error.handleError<WordView>('getWordViewListById')));
 
   }
 
@@ -43,19 +44,9 @@ export class GetWordViewListByIdService {
 
     return this.http
       .delete<void>(Global.BaseUri + 'DeleteWord/' + id, this.header)
-      .pipe(catchError(this.handleError('deleteWord', [])));
+      .pipe(catchError(this.error.handleError('deleteWord', [])));
 
   }
 
-  private log(message: string) {
-    this.toastr.error('Error get word details');
-  }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
-  }
 }

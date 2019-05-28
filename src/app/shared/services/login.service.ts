@@ -8,6 +8,7 @@ import { Global } from '../Model/Global';
 import { ToastrService } from 'ngx-toastr';
 import { User, UserModel } from '../Model/User';
 import { UserInfoComponent } from 'src/app/layout/user-info/user-info.component';
+import { ErrorService } from './error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,14 +22,14 @@ export class LoginService {
   };
 
   public currentUserValue: boolean;
-  constructor(private http: HttpClient, private toastrService: ToastrService) { }
+  constructor(private http: HttpClient, private toastrService: ToastrService, private error: ErrorService) { }
 
   Login(user: UserModel): Observable<Token> {
 
     this.currentUserValue = false;
     return this.http
       .post<Token>(Global.BaseUri + 'login/authenticate', user, this.httpOptions)
-      .pipe(catchError(this.handleError<Token>('Login')));
+      .pipe(catchError(this.error.handleError<Token>('Login')));
   }
 
   GetUser(userId: string): Observable<User> {
@@ -44,20 +45,8 @@ export class LoginService {
         'id': userId,
       }
     })
-    .pipe(catchError(this.handleError<User>('GetUser')));
+    .pipe(catchError(this.error.handleError<User>('GetUser')));
 
   }
 
-
-  private log(message: string) {
-    this.toastrService.error('Username or Password is incorrect');
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }
 }

@@ -7,6 +7,7 @@ import { Words } from '../Model/Words';
 import { Global } from '../Model/Global';
 import { WordView } from '../Model/WordView';
 import { ToastrService } from 'ngx-toastr';
+import { ErrorService } from './error.service';
 
 
 @Injectable({
@@ -22,22 +23,12 @@ export class WordService {
   };
 
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) {}
 
   getWordList(): Observable<Words[]> {
     return this.http.get<Words[]>(Global.BaseUri + 'word/getword', this.header).
-    pipe(catchError(this.handleError('getWordList', [])));
+    pipe(catchError(this.error.handleError('getWordList', [])));
   }
 
-  private log(message: string) {
-    this.toastr.error('Error get word list');
-  }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-      this.log(`${error.statusText}`);
-      return of(result as T);
-    };
-  }
 }

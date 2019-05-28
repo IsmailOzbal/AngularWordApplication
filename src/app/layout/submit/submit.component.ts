@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Inject} from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import swal from 'sweetalert2';
 import { Words } from 'src/app/shared/Model/Words';
@@ -7,6 +7,7 @@ import { WordtypeService } from 'src/app/shared/services/wordtype.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddWordService } from 'src/app/shared/services/add-word.service';
+import { WordtypepopupComponent } from './wordtypepopup/wordtypepopup.component';
 
 @Component({
   selector: 'app-submit',
@@ -20,13 +21,13 @@ export class SubmitComponent implements OnInit {
   submitted = false;
   wordForm: FormGroup;
   heroes: Words;
-  Type: string;
+  wordtype: string;
   constructor(
     private dialog: MatDialog,
     private wordTypeservice: WordtypeService,
     private wordService:  AddWordService ,
     private formBuilder: FormBuilder,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) {
 
   }
@@ -41,7 +42,17 @@ export class SubmitComponent implements OnInit {
   }
 
   AddWordType(): void {
+    const dialogRef = this.dialog.open(WordtypepopupComponent, {
+      width: '320px',
+      data: {wordtype: this.wordtype}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.wordtype = result;
+    });
   }
+
   GetWordType(): void {
     this.wordTypeservice
       .getWordTypeList()
