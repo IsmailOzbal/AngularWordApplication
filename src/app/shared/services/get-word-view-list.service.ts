@@ -15,18 +15,18 @@ import { ErrorService } from './error.service';
 })
 export class GetWordViewListService {
 
-
-  header = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' +  localStorage.getItem('token')
-    })
-  };
-
-  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) {}
 
   getWordViewList(count: string): Observable<WordView[]> {
-    return this.http.get<WordView[]>(Global.BaseUri + 'wordview/getworddetailview', this.header)
+    return this.http.get<WordView[]>(Global.BaseUri + 'wordview/getworddetailview', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' +  Global.getToken()
+      },
+      params: {
+        'Id':  Global.getUser(),
+      }
+    })
     .pipe(catchError(this.error.handleError('getWordList', [])));
   }
 

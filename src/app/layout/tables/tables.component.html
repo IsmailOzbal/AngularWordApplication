@@ -1,62 +1,67 @@
-<mat-form-field> <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" /> </mat-form-field>
 <ngx-spinner></ngx-spinner>
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-      <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="warn"  matTooltip="hide" (click)="hideWord(row)" >
-              <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
-          </button>
-          <button mat-icon-button color="warn"  matTooltip="audio" (click)="TextSpeech(row.word)" >
-              <mat-icon aria-label="Example icon-button with a heart icon">volume_up</mat-icon>
-          </button>
-      
-      </td>
- 
-    </ng-container>
+<div *ngIf="words.length>0">
+    <mat-form-field> <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" /> </mat-form-field>
 
-  <!--<ng-container matColumnDef="Image">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
-      <td mat-cell *matCellDef="let row">
-        <img
-          src="https://words-free.com/highresolution/650-free-words.png"
-          width="25%"
-          height="25%"
-        />
-      </td>
-    </ng-container> -->
-
-    <!-- Progress Column -->
-    <ng-container matColumnDef="word">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Word</th>
-      <td mat-cell *matCellDef="let row">{{ row.word }}</td>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
-      <td mat-cell *matCellDef="let row">{{ row.type }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-      <td mat-cell *matCellDef="let row">{{ row.description }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sor
-      t-header>Actions</th>
-      <td mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
-        <button mat-mini-fab color="primary" (click)="DetailWord(row)">Details</button>
-        <button mat-mini-fab color="warn" (click)="deleteWord(row)">Delete</button>
-
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <mat-paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+              <button mat-icon-button color="warn"  matTooltip="hide" (click)="hideWord(row)" >
+                  <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+              </button>
+              <button mat-icon-button color="warn"  matTooltip="audio" (click)="TextSpeech(row.word)" >
+                  <mat-icon aria-label="Example icon-button with a heart icon">volume_up</mat-icon>
+              </button>
+          
+          </td>
+     
+        </ng-container>
+    
+    
+        <!-- Progress Column -->
+        <ng-container matColumnDef="word">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Word</th>
+          <td mat-cell *matCellDef="let row">{{ row.word }}</td>
+        </ng-container>
+    
+        <!-- Color Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+          <td mat-cell *matCellDef="let row">{{ row.type }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+          <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sor
+          t-header>Actions</th>
+          <td mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
+            <button mat-mini-fab color="primary" (click)="DetailWord(row)">Details</button>
+            <button mat-mini-fab color="warn" (click)="deleteWord(row)">Delete</button>
+    
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    
+      <mat-paginator [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
 </div>
+
+<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column" *ngIf="words.length==0&&status">
+    <div fxFlex>
+        <div class="card-danger">
+            <div class="card-body">
+              <h5 class="card-title">Add Word</h5>
+              <p class="card-text">Application doesn`t have word.Please add words after looks table module</p>
+            </div>
+          </div>
+    </div>
+  </div>
+

@@ -21,7 +21,7 @@ export class GetWordViewListByIdService {
       'Authorization': 'Bearer ' +  localStorage.getItem('token')
     })
   };
-  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService) {}
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) {}
 
   getWordViewListById(id: any): Observable<WordView> {
 
@@ -30,7 +30,7 @@ export class GetWordViewListByIdService {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' +  localStorage.getItem('token')
+          'Authorization': 'Bearer ' +  Global.getToken()
         },
         params: {
           'Id': id,

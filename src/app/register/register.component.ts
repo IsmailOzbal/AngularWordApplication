@@ -17,14 +17,14 @@ export class RegisterComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private inserUser:InsertUserService,
+    private inserUser: InsertUserService,
     private toastr: ToastrService
   ) {}
 
   ngOnInit() {
     this.RegisterForm = this.formBuilder.group({
-      Name: ['', Validators.required],
-      Surname: ['', Validators.required],
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
       Username: ['', [Validators.required, Validators.minLength(6)]],
       Email: ['', Validators.email],
       Password: ['', Validators.required]

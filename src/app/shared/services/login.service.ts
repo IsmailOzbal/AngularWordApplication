@@ -34,12 +34,11 @@ export class LoginService {
 
   GetUser(userId: string): Observable<User> {
 
-
     return this.http
     .get<User>(Global.BaseUri + 'user/getuserbyid', {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' +  localStorage.getItem('token')
+        'Authorization': 'Bearer ' +   Global.getToken()
       },
       params: {
         'id': userId,

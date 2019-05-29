@@ -18,7 +18,7 @@ export class AddWordService {
   header = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' +  localStorage.getItem('token')
+      'Authorization': 'Bearer ' +  Global.getToken()
     })
   };
   constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) {}

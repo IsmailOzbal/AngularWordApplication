@@ -1,6 +1,6 @@
-<h4>EXAMLIST</h4><hr/>
-<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column">
 
+<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column" *ngIf="ELEMENT_DATA.length>0" >
+    <h4>EXAMLIST</h4><hr/>
     <div fxFlex>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="userName">
@@ -28,4 +28,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
+  </div>
+
+  <div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column" *ngIf="ELEMENT_DATA.length==0" >
+      <div fxFlex>
+          <div class="card-danger">
+              <div class="card-body">
+                <h5 class="card-title">Exam Solve</h5>
+                <p class="card-text">Application doesn`t find solved exam.Please solve exam after looks exam list module</p>
+              </div>
+            </div>
+      </div>
   </div>

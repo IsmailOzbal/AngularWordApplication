@@ -26,11 +26,13 @@ export class LoginComponent implements OnInit {
     this.LoginForm = this.formBuilder.group({
         Email: ['', Validators.required],
         Password: ['', Validators.required],
+        isRemember: null
     });
     }
 
     onSubmit() {
         if (this.LoginForm.valid) {
+            console.log(this.LoginForm.value);
             this.spinner.show();
             this.user.username = this.LoginForm.value.Email;
             this.user.password = this.LoginForm.value.Password;
@@ -48,19 +50,24 @@ export class LoginComponent implements OnInit {
 
     AccessLogin() {
         if (this.token !== undefined) {
-            localStorage.setItem('isLoggedin', 'true');
-            localStorage.setItem('token', this.token.token);
-            localStorage.setItem('expiredate', this.token.expireDate);
-            localStorage.setItem('userid', this.token.userId.toString());
+            if (this.LoginForm.value.isRemember === true) {
+                localStorage.setItem('isRemember', 'true');
+                localStorage.setItem('isLoggedin', 'true');
+                localStorage.setItem('token', this.token.token);
+                localStorage.setItem('expiredate', this.token.expireDate);
+                localStorage.setItem('userid', this.token.userId.toString());
+            } else {
+                localStorage.setItem('isRemember', 'false');
+                sessionStorage.setItem('isLoggedin', 'true');
+                sessionStorage.setItem('token', this.token.token);
+                sessionStorage.setItem('expiredate', this.token.expireDate);
+                sessionStorage.setItem('userid', this.token.userId.toString());
+            }
+
             this.router.navigate(['/dashboard']);
         } else {
               this.spinner.hide();
         }
 
-    }
-
-    onLogin() {
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['/dashboard']);
     }
 }

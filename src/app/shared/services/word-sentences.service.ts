@@ -15,7 +15,7 @@ export class WordSentencesService {
   header = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' +  localStorage.getItem('token')
+      'Authorization': 'Bearer ' +  Global.getToken()
     })
   };
 

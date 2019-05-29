@@ -26,6 +26,7 @@ export class TablesComponent implements OnInit {
   token: Token = new Token();
   user: UserModel = new UserModel();
   speech = new Speech();
+  status = false;
   constructor(
     private _service: GetWordViewListService,
     private deleteword: DeleteWordService,
@@ -63,6 +64,7 @@ export class TablesComponent implements OnInit {
       .toPromise()
       .then(res => {
         this.words = res;
+        this.status = true;
         this.spinner.hide();
         this.convert();
       });

@@ -14,7 +14,7 @@ import { ErrorService } from './error.service';
 })
 export class DeleteWordService {
 
-  constructor(private http: HttpClient, private toastr: ToastrService,private error: ErrorService
+  constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService
   ) {}
 
   deleteWord(id: number): any  {
@@ -26,7 +26,7 @@ export class DeleteWordService {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' +  localStorage.getItem('token')
+          'Authorization': 'Bearer ' +  Global.getToken()
         }
       })
       .pipe(catchError(this.error.handleError('deleteWord', [])));

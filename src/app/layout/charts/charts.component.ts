@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartService } from 'src/app/shared/services/chart.service';
 import { Chart } from 'src/app/shared/Model/Chart';
 import { GetexamService } from 'src/app/shared/services/getexam.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -17,7 +17,6 @@ export class ChartsComponent implements OnInit {
   public barChartLabels: string[] = [];
   public barChartType: string;
   public barChartLegend: boolean;
-  public barloading = true;
   public barExist = false;
   public chartData: Chart[] = [];
   public pieData: Chart[] = [];
@@ -28,7 +27,6 @@ export class ChartsComponent implements OnInit {
   public doughnutChartData: any[] = [{ data: [], label: '' }];
   public doughnutChartType: string;
   public doughnutChartLegend: boolean;
-  public doughnutloading = true;
   public doughnutExist = false;
   // Radar
   public radarChartLabels: string[] = [];
@@ -40,7 +38,6 @@ export class ChartsComponent implements OnInit {
   public pieChartLabels: string[] = [];
   public pieChartData: any[] = [{ data: [], label: '' }];
   public pieChartType: string;
-  public pieloading = true;
   public pieExist = false;
 
   // PolarArea
@@ -88,10 +85,20 @@ export class ChartsComponent implements OnInit {
   public lineChartLegend: boolean;
   public lineChartType: string;
 
-  constructor(private chartService: ChartService, private examService: GetexamService) {
+
+  constructor(private chartService: ChartService, private examService: GetexamService, private spinner: NgxSpinnerService ) {
+  }
+
+
+
+  ngOnInit() {
+
+
     this.GetCharData();
 
     this.GetPieData();
+
+
   }
 
   GetPieData() {
@@ -104,7 +111,6 @@ export class ChartsComponent implements OnInit {
         this.barChartLabels = this.pieData['labels'];
         this.barChartData[0].data = this.pieData['data'];
         this.barChartData[0].label = this.pieData['series'];
-        this.barloading = false;
         this.barExist = true;
       });
   }
@@ -115,6 +121,9 @@ export class ChartsComponent implements OnInit {
       .toPromise()
       .then(res => {
         this.chartData = res;
+        this.doughnutExist = true;
+        this.pieExist = true;
+        this.radarExist = true;
         this.AccessValues();
       });
   }
@@ -124,8 +133,6 @@ export class ChartsComponent implements OnInit {
     this.doughnutChartLabels = this.chartData['labels'];
     this.doughnutChartData[0].data = this.chartData['data'];
     this.doughnutChartData[0].label = this.chartData['series'];
-    this.doughnutloading = false;
-    this.doughnutExist = true;
 
     this.pieChartLabels = this.chartData['labels'];
     this.pieChartData[0].data = this.chartData['data'];
@@ -134,12 +141,7 @@ export class ChartsComponent implements OnInit {
     this.radarChartLabels = this.chartData['labels'];
     this.radarChartData[0].data = this.chartData['data'];
     this.radarChartData[0].label = this.chartData['series'];
-    this.radarExist = true;
-    this.pieloading = false;
-    this.pieExist = true;
-  }
 
-  ngOnInit() {
     this.barChartType = 'bar';
     this.barChartLegend = true;
     this.doughnutChartType = 'doughnut';
@@ -150,5 +152,6 @@ export class ChartsComponent implements OnInit {
     this.polarAreaChartType = 'polarArea';
     this.lineChartLegend = true;
     this.lineChartType = 'line';
+
   }
 }

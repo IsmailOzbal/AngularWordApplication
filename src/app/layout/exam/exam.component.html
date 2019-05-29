@@ -23,3 +23,15 @@
     </b>
   </div>
 </div>
+
+
+<div class="mb-20" fxLayout="row" *ngIf="questionList.length == 0&&status" fxLayout.lt-md="row" fxFlex>
+    <div fxFlex>
+        <div class="card-danger">
+            <div class="card-body">
+              <h5 class="card-title">Add Word</h5>
+              <p class="card-text">Application doesn`t have word.Please add words after enter exam module</p>
+            </div>
+          </div>
+    </div>
+</div>

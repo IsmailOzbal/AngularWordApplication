@@ -10,11 +10,22 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router, private loginService: LoginService, ) {}
 
     canActivate() {
-        const currentUser = localStorage.getItem('isLoggedin');
+        const currentUser = localStorage.getItem('isRemember');
 
-        if (currentUser) {
+        if (currentUser === 'true' && localStorage.getItem('isLoggedin')) {
 
             this.date = localStorage.getItem('expiredate');
+            const newDate = new Date(this.date);
+            const now: Date = new Date();
+
+            if (newDate < now) {
+                this.router.navigate(['/login']);
+            }
+
+            return true;
+        } else if (currentUser === 'false' && sessionStorage.getItem('isLoggedin')) {
+
+            this.date = sessionStorage.getItem('expiredate');
             const newDate = new Date(this.date);
             const now: Date = new Date();
 

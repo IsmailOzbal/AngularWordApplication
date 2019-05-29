@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   Data: Chart[] = [];
   Labels: string[] = [];
   Counts: number[] = [];
+  status = false;
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -47,6 +48,7 @@ export class DashboardComponent implements OnInit {
       .then(res => {
         this.ELEMENT_DATA = res.slice(0, 7);
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+        this.status = true;
         this.spinner.hide();
       });
   }

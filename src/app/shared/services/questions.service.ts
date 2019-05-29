@@ -14,17 +14,18 @@ import { ErrorService } from './error.service';
 })
 export class QuestionsService {
 
-  header = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' +  localStorage.getItem('token')
-    })
-  };
-
   constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) { }
 
   getQuestionsList(): Observable<Questions[]> {
-    return this.http.get<Questions[]>(Global.BaseUri + 'question/getquestions', this.header).
+    return this.http.get<Questions[]>(Global.BaseUri + 'question/getquestions', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' +  Global.getToken()
+      },
+      params: {
+        'Id':  Global.getUser(),
+      }
+    }).
     pipe(catchError(this.error.handleError('GetQuestion', [])));
   }
 

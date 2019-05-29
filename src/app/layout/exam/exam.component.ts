@@ -25,6 +25,7 @@ export class ExamComponent implements OnInit {
   que = 0;
   control: boolean;
   exam: Exam = new Exam();
+  status = false;
   constructor(
     private questionservice: QuestionsService,
     private spinner: NgxSpinnerService,
@@ -48,6 +49,7 @@ export class ExamComponent implements OnInit {
       .toPromise()
       .then(res => {
         this.questionList = res;
+        this.status = true;
         this.spinner.hide();
       });
   }

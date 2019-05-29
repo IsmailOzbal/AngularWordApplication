@@ -12,17 +12,18 @@ import { ErrorService } from './error.service';
 })
 export class GetexamService {
 
-  header = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' +  localStorage.getItem('token')
-    })
-  };
-
   constructor(private http: HttpClient, private toastr: ToastrService, private error: ErrorService) { }
 
   getExamChartData(): Observable<Chart[]> {
-    return this.http.get<Chart[]>(Global.BaseUri + 'chart/getexamscore', this.header)
+    return this.http.get<Chart[]>(Global.BaseUri + 'chart/getexamscore',  {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' +  Global.getToken()
+      },
+      params: {
+        'Id':  Global.getUser(),
+      }
+    })
     .pipe(catchError(this.error.handleError('getExamChartData', [])));
   }
 

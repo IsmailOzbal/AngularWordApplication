@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -20,22 +19,14 @@ export class InsertUserService {
       'Content-Type': 'application/json'
     })
   };
-
-  User: UserModel = new UserModel();
   constructor(private http: HttpClient, private toastrService: ToastrService, private error: ErrorService) {
-
 
   }
 
   AddUser(user: any): Observable<User> {
-    this.User.firstname = user.Name;
-    this.User.lastname = user.Surname;
-    this.User.username = user.Username;
-    this.User.password = user.Password;
-
 
     return this.http
-      .post<User>(Global.BaseUri + 'user/adduser', this.User, this.header)
+      .post<User>(Global.BaseUri + 'user/adduser', user, this.header)
       .pipe(catchError(this.error.handleError<User>('AddUser')));
   }
 

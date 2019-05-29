@@ -15,6 +15,7 @@ export class ExamlistComponent implements OnInit {
   ELEMENT_DATA: ExamView[] = [];
   displayedColumns = ['userName', 'score', 'createDate', 'result'];
   dataSource: any;
+  status = false;
   constructor(private questionservice: GetexamlistService) {}
 
   ngOnInit() {
@@ -29,6 +30,7 @@ export class ExamlistComponent implements OnInit {
       .then(res => {
         console.log(res);
         this.ELEMENT_DATA = res;
+        this.status = true;
         this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
       });
   }

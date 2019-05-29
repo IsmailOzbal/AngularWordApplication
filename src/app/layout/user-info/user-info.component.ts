@@ -30,7 +30,8 @@ export class UserInfoComponent implements OnInit {
       }
     );
 
-    this.userId = localStorage.getItem('userid');
+
+    this.userId = localStorage.getItem('isRemember') === 'true' ? localStorage.getItem('userid') : sessionStorage.getItem('userid');
 
     this.spinner.show();
 
