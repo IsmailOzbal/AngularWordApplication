@@ -7,8 +7,9 @@ import { WordtypeService } from 'src/app/shared/services/wordtype.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddWordService } from 'src/app/shared/services/add-word.service';
+import { WordService } from 'src/app/shared/services/word.service';
 import { WordtypepopupComponent } from './wordtypepopup/wordtypepopup.component';
-
+import {WordLevel} from 'src/app/shared/Model/WordLevel';
 @Component({
   selector: 'app-submit',
   templateUrl: './submit.component.html',
@@ -18,6 +19,7 @@ export class SubmitComponent implements OnInit {
   closeResult: string;
   private newWord: Words = new Words();
   wordtypeLists: WordType[] = [];
+  wordlevelList: WordLevel[] = [];
   submitted = false;
   wordForm: FormGroup;
   heroes: Words;
@@ -28,6 +30,7 @@ export class SubmitComponent implements OnInit {
     private wordService:  AddWordService ,
     private formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
+    private levelService: WordService
   ) {
 
   }
@@ -35,10 +38,12 @@ export class SubmitComponent implements OnInit {
   ngOnInit() {
     this.wordForm = this.formBuilder.group({
       WordTypeId: ['', Validators.required],
+      WordLevelId: ['', Validators.required],
       Word: ['', Validators.required]
     });
     this.spinner.show();
     this.GetWordType();
+    this.GetLevel();
   }
 
   AddWordType(): void {
@@ -53,13 +58,20 @@ export class SubmitComponent implements OnInit {
     });
   }
 
+  GetLevel(): void {
+    this.levelService.getWordLevelList().toPromise().then(res => {
+    this.wordlevelList = res;
+    console.log(this.wordlevelList);
+    });
+  }
+
+
   GetWordType(): void {
     this.wordTypeservice
       .getWordTypeList()
       .toPromise()
       .then(res => {
         this.wordtypeLists = res;
-        console.log(res);
         this.spinner.hide();
       });
   }
@@ -75,7 +87,9 @@ export class SubmitComponent implements OnInit {
     this.newWord.id = 0;
     this.newWord.wordTypeId = this.wordForm.value.WordTypeId;
     this.newWord.word = this.wordForm.value.Word;
-    this.newWord.userId = localStorage.getItem('userid');
+    this.newWord.wordLevelId = this.wordForm.value.WordLevelId;
+
+    console.log(this.newWord);
     if (!this.newWord.wordTypeId) {
       swal('WordType Id required');
     }

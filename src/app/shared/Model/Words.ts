@@ -3,4 +3,5 @@ export class Words {
  public wordTypeId: number;
  public word: string;
  public userId: string;
+ public wordLevelId: number;
 }

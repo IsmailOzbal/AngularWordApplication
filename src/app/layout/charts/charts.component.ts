@@ -20,6 +20,8 @@ export class ChartsComponent implements OnInit {
   public barExist = false;
   public chartData: Chart[] = [];
   public pieData: Chart[] = [];
+  public barData: Chart[] = [];
+  public radarData: Chart[] = [];
   public barChartData: any[] = [{ data: [], label: '' }];
 
   // Doughnut
@@ -93,54 +95,13 @@ export class ChartsComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.GetCharData();
 
-    this.GetPieData();
+    this.GetBarData();
 
+    this.getCompleteWordData();
 
-  }
-
-  GetPieData() {
-    this.examService
-      .getExamChartData()
-      .toPromise()
-      .then(res => {
-        console.log(res);
-        this.pieData = res;
-        this.barChartLabels = this.pieData['labels'];
-        this.barChartData[0].data = this.pieData['data'];
-        this.barChartData[0].label = this.pieData['series'];
-        this.barExist = true;
-      });
-  }
-
-  GetCharData() {
-    this.chartService
-      .getChartData()
-      .toPromise()
-      .then(res => {
-        this.chartData = res;
-        this.doughnutExist = true;
-        this.pieExist = true;
-        this.radarExist = true;
-        this.AccessValues();
-      });
-  }
-
-  AccessValues() {
-
-    this.doughnutChartLabels = this.chartData['labels'];
-    this.doughnutChartData[0].data = this.chartData['data'];
-    this.doughnutChartData[0].label = this.chartData['series'];
-
-    this.pieChartLabels = this.chartData['labels'];
-    this.pieChartData[0].data = this.chartData['data'];
-    this.pieChartData[0].label = this.chartData['series'];
-
-    this.radarChartLabels = this.chartData['labels'];
-    this.radarChartData[0].data = this.chartData['data'];
-    this.radarChartData[0].label = this.chartData['series'];
+    this.getWordLevelData();
 
     this.barChartType = 'bar';
     this.barChartLegend = true;
@@ -154,4 +115,64 @@ export class ChartsComponent implements OnInit {
     this.lineChartType = 'line';
 
   }
+
+  GetBarData() {
+    this.examService
+      .getExamChartData()
+      .toPromise()
+      .then(res => {
+        console.log(res);
+        this.barData = res;
+        this.barChartLabels = this.barData['labels'];
+        this.barChartData[0].data = this.barData['data'];
+        this.barChartData[0].label = this.barData['series'];
+        this.barExist = true;
+      });
+  }
+
+
+  getCompleteWordData() {
+
+      this.chartService
+      .getChartCompleteWordData()
+      .toPromise()
+      .then(res => {
+        this.pieData = res;
+        this.pieExist = true;
+        this.pieChartLabels = this.pieData['labels'];
+        this.pieChartData[0].data = this.pieData['data'];
+        this.pieChartData[0].label = this.pieData['series'];
+
+      });
+
+    }
+
+
+  getWordLevelData()   {
+      this.chartService
+      .getChartWordLevelData()
+      .toPromise()
+      .then(res => {
+        this.radarData = res;
+        this.radarExist = true;
+        this.radarChartLabels = this.radarData['labels'];
+        this.radarChartData[0].data = this.radarData['data'];
+        this.radarChartData[0].label = this.radarData['series'];
+      });
+    }
+
+  GetCharData() {
+    this.chartService
+      .getChartData()
+      .toPromise()
+      .then(res => {
+        this.chartData = res;
+        this.doughnutExist = true;
+        this.doughnutChartLabels = this.chartData['labels'];
+        this.doughnutChartData[0].data = this.chartData['data'];
+        this.doughnutChartData[0].label = this.chartData['series'];
+      });
+  }
+
+
 }

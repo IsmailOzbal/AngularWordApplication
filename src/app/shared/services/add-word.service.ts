@@ -25,6 +25,7 @@ export class AddWordService {
 
 
   AddWord(word: Words): Observable<Words> {
+    word.userId =  Global.getUser();
     return this.http
       .post<Words>(Global.BaseUri + 'word/addword', word , this.header)
       .pipe(catchError(this.error.handleError<Words>('addHero')));

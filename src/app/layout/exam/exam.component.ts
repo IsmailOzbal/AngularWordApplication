@@ -90,7 +90,7 @@ export class ExamComponent implements OnInit {
       }
 
       this.exam.score = this.score;
-      this.exam.userId = +localStorage.getItem('userid');
+    
 
       this.insertScore
         .InsertScore(this.exam)

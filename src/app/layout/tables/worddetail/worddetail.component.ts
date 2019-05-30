@@ -42,30 +42,29 @@ export class WorddetailComponent implements OnInit {
         this.wordId = params.producer;
         this.getWord();
       });
+
+      Speech.init({
+        volume: 1,
+        lang: 'en-GB',
+        rate: 1,
+        pitch: 1,
+        voice: 'Google UK English Male',
+        splitSentences: true,
+        listeners: {
+          onvoiceschanged: voices => {
+            console.log('Event voiceschanged', voices);
+          }
+        }
+      });
   }
 
-  SpeechInit() {
-    Speech.init({
-      volume: 1,
-      lang: 'en-GB',
-      rate: 1,
-      pitch: 1,
-      voice: 'Google UK English Male',
-      splitSentences: true,
-      listeners: {
-        onvoiceschanged: voices => {
-          console.log('Event voiceschanged', voices);
-        }
-      }
-    });
-  }
+
 
   GoBack() {
     this.router.navigate(['/tables']);
   }
 
   TextToSpeech(_text: any) {
-    this.SpeechInit();
     this.speech
       .speak({
         text: _text

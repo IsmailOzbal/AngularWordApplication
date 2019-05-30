@@ -42,7 +42,7 @@
 <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
   <div fxFlex>
     <mat-card [ngClass]="(radarChartData[0].data.length==0&&radarExist)?'primary':''" >
-      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>
+      <mat-card-header> <mat-card-title>Word Level Count</mat-card-title> </mat-card-header>
       <mat-card-content  *ngIf="radarChartData[0].data.length>0">
         <canvas
           baseChart
@@ -60,7 +60,7 @@
   </div>
   <div fxFlex>
     <mat-card [ngClass]="(pieChartData[0].data.length==0&&pieExist)?'primary':''"    >
-      <mat-card-header> <mat-card-title>Word Type Count</mat-card-title> </mat-card-header>
+      <mat-card-header> <mat-card-title>Word Information Count</mat-card-title> </mat-card-header>
       <mat-card-content  *ngIf="pieChartData[0].data.length>0">
         <canvas
           baseChart

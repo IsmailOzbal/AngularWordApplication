@@ -38,10 +38,6 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.GetService();
-
-  }
-
-  SpeechInit() {
     Speech.init({
       volume: 1,
       lang: 'en-GB',
@@ -55,7 +51,9 @@ export class TablesComponent implements OnInit {
         }
       }
     });
+
   }
+
 
 
   GetService(): void {
@@ -119,7 +117,6 @@ export class TablesComponent implements OnInit {
 
 
   TextSpeech(text: any) {
-    this.SpeechInit();
     this.speech
     .speak({
       text: text

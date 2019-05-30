@@ -26,7 +26,7 @@ export class InsertScoreService {
 
   InsertScore(exam: Exam): Observable<Exam> {
 
-
+    exam.userId = +Global.getUser();
     return this.http
       .post<Exam>(Global.BaseUri + 'exam/addexam', exam, this.header)
       .pipe(catchError(this.error.handleError<Exam>('InsertScore')));

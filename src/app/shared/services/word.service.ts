@@ -4,6 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import swal from 'sweetalert2';
 import { Words } from '../Model/Words';
+import { WordLevel } from '../Model/WordLevel';
 import { Global } from '../Model/Global';
 import { WordView } from '../Model/WordView';
 import { ToastrService } from 'ngx-toastr';
@@ -28,6 +29,11 @@ export class WordService {
   getWordList(): Observable<Words[]> {
     return this.http.get<Words[]>(Global.BaseUri + 'word/getword', this.header).
     pipe(catchError(this.error.handleError('getWordList', [])));
+  }
+
+  getWordLevelList(): Observable<WordLevel[]> {
+    return this.http.get<WordLevel[]>(Global.BaseUri + 'word/getwordlevel', this.header).
+    pipe(catchError(this.error.handleError('getWordLevelList', [])));
   }
 
 
