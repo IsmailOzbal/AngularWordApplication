@@ -18,6 +18,22 @@
         <br />
       </mat-radio-group>
     </mat-card-content>
+    <mat-card-footer>
+      <div *ngIf="levelid==1">
+          <img class="small"  src="../../../../assets/images/easy.jpg"  >
+          <b>Easy</b>
+      </div>
+      <div *ngIf="levelid==2">
+          <img class="small"  src="../../../../assets/images/medium.jpg" >
+          <b>Medium</b>
+      </div>
+      <div *ngIf="levelid==3">
+          <img class="small"  src="../../../../assets/images/hard.jpg" >
+          <b>Hard</b>
+      </div>
+       
+
+    </mat-card-footer>
 </mat-card>
 </div>
 </div>

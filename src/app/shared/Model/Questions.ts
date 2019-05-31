@@ -1,4 +1,5 @@
 export class Questions {
+
   public count: number;
 
   public tag: string;
@@ -12,4 +13,6 @@ export class Questions {
   public answerfour: string;
 
   public correctanswer: string;
+
+  public levelid: number;
 }

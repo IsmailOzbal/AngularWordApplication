@@ -48,6 +48,7 @@ export class ExamComponent implements OnInit {
       .getQuestionsList()
       .toPromise()
       .then(res => {
+        console.log(res);
         this.questionList = res;
         this.status = true;
         this.spinner.hide();
@@ -90,7 +91,6 @@ export class ExamComponent implements OnInit {
       }
 
       this.exam.score = this.score;
-    
 
       this.insertScore
         .InsertScore(this.exam)

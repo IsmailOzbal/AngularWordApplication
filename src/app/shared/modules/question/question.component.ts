@@ -14,6 +14,7 @@ export class QuestionComponent implements OnInit {
   @Input() answertwo: string;
   @Input() answerthree: string;
   @Input() answerfour: string;
+  @Input() levelid: number;
   constructor(private examcomponent: ExamComponent) {
 
   }
